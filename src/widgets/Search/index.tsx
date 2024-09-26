@@ -61,7 +61,7 @@ export const SearchComponent = ({
      * This is optional, just in case we want to filter the results. If we change the distance, results will change.
      */
     query: (query) => {
-      query.getRequest().setSearchFilter(new FilterGeo('locationgeo', '60km'));
+      query.getRequest().setSearchFilter(new FilterGeo('locationgeo', '100km'));
     }
   });
   const totalPages = Math.ceil(totalItems / itemsPerPage);
