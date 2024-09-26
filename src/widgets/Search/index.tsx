@@ -10,6 +10,7 @@ import ResultsPerPage from '../components/ResultsPerPage';
 import SearchFacets from '../components/SearchFacets';
 import SearchPagination from '../components/SearchPagination';
 import Spinner from '../components/Spinner';
+import SortOrder from '../components/SortOrder/index';
 
 type ArticleModel = {
   id: string;
@@ -38,12 +39,13 @@ export const SearchComponent = ({
   const {
     widgetRef,
     actions: { onItemClick },
-    state: {  page, itemsPerPage },
+    state: { sortType, page, itemsPerPage },
     queryResult: {
       isLoading,
       isFetching,
       data: {
         total_item: totalItems = 0,
+        sort: { choices: sortChoices = [] } = {},
         facet: facets = [],
         content: articles = [],
       } = {},
@@ -101,6 +103,7 @@ export const SearchComponent = ({
                     totalItemsReturned={articles.length}
                   />
                 )}
+                <SortOrder options={sortChoices} selected={sortType} />
               </section>
 
               {/* Results */}
